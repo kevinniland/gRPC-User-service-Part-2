@@ -118,6 +118,22 @@ java -jar target/restAPI-dropwizard-lab-1.0-SNAPSHOT.jar server artistApiConfig.
 ### Try it out
 Going to the URL `<HOST/PORT URL>`/artists should now return our artist list (containing just one artist) in JSON format.
 
+### Add a HealthCheck
+Dropwizard scolds us if we try to run it without including a HealthCheck. Let's add a dummy HealthCheck so it will stop giving out to us. Create a class `ExampleHealthCheck` which extends `io.dropwizard.HealthCheck`
+```
+package ie.gmit.ds;
+
+import com.codahale.metrics.health.HealthCheck;
+
+public class ExampleHealthCheck extends HealthCheck {
+
+    @Override
+    protected Result check() throws Exception {
+        return Result.healthy();
+    }
+}
+```
+
 ### Add more endpoints
 Try to add handling for more endpoints in our API definition, e.g.:
 - `GET /artists/{artistId}`
