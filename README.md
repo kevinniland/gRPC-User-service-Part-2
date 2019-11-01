@@ -134,7 +134,12 @@ public class ExampleHealthCheck extends HealthCheck {
     }
 }
 ```
-
+Register the HealthCheck with the application by adding these lines to the `ArtistApiAppliction` class's `run` method:
+```
+final ExampleHealthCheck healthCheck = new ExampleHealthCheck();
+environment.healthChecks().register("example", healthCheck);
+```
+Now run the application again. Dropwizard should have stopped complaining about missing health checks.
 ### Add more endpoints
 Try to add handling for more endpoints in our API definition, e.g.:
 - `GET /artists/{artistId}`
