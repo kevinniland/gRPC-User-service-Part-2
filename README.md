@@ -37,7 +37,7 @@ server:
       port: 9000
 ```
 
-### Add an Artist resource class
+### Add an Artist representation class
 Our API will manage artists, so we'll need a class to represent an `Artist`. In our OpenAPI definition we specified that an `Artist` would have the following fields:
 - `artistName`: string
 - `artistId`: integer
