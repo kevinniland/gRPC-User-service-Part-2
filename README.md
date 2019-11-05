@@ -18,8 +18,8 @@ The project so far only has a pom file. Take a look at it. It contains:
 ### Create a Configuration
 Every Dropwizard app has to have a configuration, and a class for that configuration to be serialised to. So we need to create a configuration class. We're not going to use any user-defined configuration parameters in our simple API, so this class will be empty.
 
-- Create a new folder `src/main/java/ie/gmit/ds`. We'll put all of our classes in here for now.
-- Create a new class `ArtistApiConfig` in `ie.gmit.ds`.
+- The project structure has already been created. We'll put all of our classes in the `ie.gmit.ds` package for now. In a real application with a lot of classes these would be organised into multiple packages.
+- Create a new class `ArtistApiConfig` in `ie.gmit.ds`, and add the following:
 
 ```
 package ie.gmit.ds;
