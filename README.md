@@ -114,13 +114,13 @@ public class ArtistApiApplication extends Application<ArtistApiConfig> {
 The `run` method (called by the main method), registers our `ArtistApiResource` class, thereby making it available to the application to handle REST requests.
 
 ### Build and run
-We can now build an executable jar. In a terminal, run `mvn package`. Once the build has finished, you should see a fat jar (>10MB) called `restAPI-dropwizard-lab-1.0-SNAPSHOT.jar` in the `target/` folder. Executing this with the parameters `server` and the path to our config file will start up our server:
+We can now build an executable jar. In a terminal, run `mvn package`. Once the build has finished, you should see a fat jar (>10MB) called `artist-api-dropwizard-1.0-SNAPSHOT.jar` in the `target/` folder. Executing this with the parameters `server` and the path to our config file will start up our server:
 ```
-java -jar target/restAPI-dropwizard-lab-1.0-SNAPSHOT.jar server artistApiConfig.yaml
+java -jar target/artist-api-dropwizard-soln-1.0-SNAPSHOT.jar server artistApiConfig.yaml
 ```
 
 ### Try it out
-Going to the URL `<HOST/PORT URL>`/artists should now return our artist list (containing just one artist) in JSON format.
+Going to the URL `<HOST/PORT URL>`/artists should now return our artist list (containing just one artist) in JSON format. If working on a local machine, this will be at http://localhost:9000/artists. If using gitpod, you'll need to expose the port 9000 in your development environment and get the URL to that port, follow the on-screen instructions in gitpod or click on the port number 9000 in the bottom right of the IDE.
 
 ### Add a HealthCheck
 Dropwizard scolds us if we try to run it without including a HealthCheck. Let's add a dummy HealthCheck so it will stop giving out to us. Create a class `ExampleHealthCheck` which extends `io.dropwizard.HealthCheck`
