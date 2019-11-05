@@ -37,23 +37,26 @@ server:
       port: 9000
 ```
 
-### Add an Artist resource class
+### The Artist representation class
 Our API will manage artists, so we'll need a class to represent an `Artist`. In our OpenAPI definition we specified that an `Artist` would have the following fields:
 - `artistName`: string
 - `artistId`: integer
 - `artistGenre`: string
 - `albumsRecorded`: integer
 
-Create a simple POJO (Plain Old Java Object) called `Artist` in with these 4 fields. The class should have:
-- a no-argument constructor `public Artist() {}`
+A simple POJO (Plain Old Java Object) called `Artist` with these 4 fields has already been created. The class has:
+- a no-argument constructor `public Artist() {}` (needed for Jackson deserialisation).
 - a constructor that takes all 4 fields as arguments
 ```
 public Artist(int artistId, String artistName, String artistGenre, int albumsRecorded) {
 ```
-- getters for all 4 fields. Each getter should be annotated with `@JsonProperty`. This will allow the class to be serialised/deserialised by Jackson.
-- don't create setters. We want our class to be immutable (can't be changed after it's created).
+- getters for all 4 fields.
+- there aren't any setters because we want our class to be immutable (can't be changed after it's created). This isn't strictly necessary, but is good programming practice.
 
-### Add an Artist Resource class
+Our API will need to be able to convert instances of our POJO to/from JSON and XML for handling requests and responses to our API. The Jackson library (which we met in the first lab of the semester) can handle this for us, we just need to add some annotations:
+- Each getter method in the `Artist` class should be annotated with `@JsonProperty`. This will allow the class to be serialised/deserialised by Jackson.
+
+### Add an Artist resource class
 Now that we've created an `Artist` class, we can create the class which map incoming HTTP requests to methods using JAX-RS/Jersey annotations.
 
 Create a new class called `ArtistApiResource`. Annotate the class with JAX-RS annotations that indicate that this class will:
