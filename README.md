@@ -78,13 +78,15 @@ public ArtistApiResource() {
 ```
 Now we can define some API operations. We'll start with `GET /artists`, the request what will return all artists. We'lll use the JAX_RS annotation `@GET` to map this method to a `GET` request:
 ```
-@GET
-public List<Artist> getArtists() {
-    // artistsMap.values() returns a Collection<Artist>
-    // We can convert this collection to an ArrayList by passing it into an
-    // ArrayList<Artist> constructor
-    return new ArrayList<Artist>(artistsMap.values());
-}
+  @GET
+  public Collection<Artist> getArtists() {
+      // artistsMap.values() returns Collection<Artist>
+      // Collection is the interface implemented by Java collections like ArrayList, LinkedList etc.
+      // it's basically a generic list.
+      // https://docs.oracle.com/javase/7/docs/api/java/util/Collection.html
+      
+      return artistsMap.values();
+  }
 ```
 This method just return the contents of the `artistsMap` as a list.
 
