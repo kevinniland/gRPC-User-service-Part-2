@@ -8,11 +8,11 @@ public class UserApiApplication extends Application<UserApiConfig> {
 		new UserApiApplication().run(args);
 	}
 
-	public void run(UserApiConfig artistApiConfig, Environment environment) throws Exception {
-		final UserApiResource resource = new UserApiResource();
+	public void run(UserApiConfig userApiConfig, Environment environment) throws Exception {
+		final UserApiResource resource = new UserApiResource(environment.getValidator(), userApiConfig.getPasswordServicePort());
 		environment.jersey().register(resource);
 
 		final UserHealthCheck healthCheck = new UserHealthCheck();
-		environment.healthChecks().register("example", healthCheck);
+		environment.healthChecks().register("Health check", healthCheck);
 	}
 }
