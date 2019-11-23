@@ -3,6 +3,7 @@ package ie.gmit.ds;
 import java.io.UnsupportedEncodingException;
 import java.util.Collection;
 import java.util.HashMap;
+import java.util.Scanner;
 import java.util.Set;
 
 import javax.validation.ConstraintViolation;
@@ -40,8 +41,9 @@ public class UserApiResource {
 	String userNameInit = "kevinniland97";
 	String userEmailInit = "kevinniland97@gmail.com";
 	String userPasswordInit = "password";
-	
+
 	String passwordServiceIP = "localhost";
+	int passwordServicePort;
 
 	/*
 	 * https://stackoverflow.com/questions/7048745/what-is-the-difference-between-
@@ -80,10 +82,12 @@ public class UserApiResource {
 	private HashMap<Integer, UserReceiveData> usersMap = new HashMap<>(); // Used to store user details
 	private final Validator validator;
 
-	public UserApiResource(Validator validator, int passwordServicePort) throws InterruptedException, UnsupportedEncodingException {
+	public UserApiResource(Validator validator, int passwordServicePort)
+			throws InterruptedException, UnsupportedEncodingException {
 		this.validator = validator;
 
 		try {
+
 			userClient = new UserClient(passwordServiceIP, passwordServicePort);
 		} catch (Exception exception) {
 			System.out.println("ERROR: Unable to connect to the service on that port. Please make sure"

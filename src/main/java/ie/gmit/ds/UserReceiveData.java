@@ -1,10 +1,7 @@
 package ie.gmit.ds;
 
-import javax.validation.constraints.NotNull;
 import javax.xml.bind.annotation.*;
-import org.hibernate.validator.constraints.NotBlank;
 import com.fasterxml.jackson.annotation.JsonProperty;
-
 
 /*
  *  This class is used solely to for validation/logging in a user. Since we log in a user using just their user ID

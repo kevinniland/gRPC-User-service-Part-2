@@ -9,35 +9,35 @@ import javax.xml.bind.annotation.*;
  */
 @XmlRootElement
 public class UserLogin {
-	private int userId;
-	private String userPassword;
+	private int uId;
+	private String uPassword;
 
 	public UserLogin() {
 		super();
 	}
 
 	public UserLogin(int userId, String userPassword) {
-		this.userId = userId;
-		this.userPassword = userPassword;
+		this.uId = userId;
+		this.uPassword = userPassword;
 	}
 
 	public void setUserId(int userId) {
-		this.userId = userId;
+		this.uId = userId;
 	}
 
 	@JsonProperty
 	@XmlElement
 	public int getUserId() {
-		return userId;
+		return uId;
 	}
 
 	public void setUserPassword(String userPassword) {
-		this.userPassword = userPassword;
+		this.uPassword = userPassword;
 	}
 
 	@JsonProperty
 	@XmlElement
 	public String getUserPassword() {
-		return userPassword;
+		return uPassword;
 	}
 }
